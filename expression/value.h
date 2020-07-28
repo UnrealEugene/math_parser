@@ -7,7 +7,7 @@
 #include "expression.h"
 
 namespace math {
-    class value : expression {
+    class value : public expression {
      public:
         inline explicit value(number v) : val_(v) { }
         inline std::shared_ptr<expression> get_arg(size_t) override {

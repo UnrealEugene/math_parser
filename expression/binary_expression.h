@@ -7,7 +7,7 @@
 #include "expression.h"
 
 namespace math {
-    class binary_expression : expression {
+    class binary_expression : public expression {
      public:
         binary_expression(std::shared_ptr<expression>, std::shared_ptr<expression>);
 

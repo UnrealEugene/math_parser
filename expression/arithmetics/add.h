@@ -6,13 +6,13 @@
 #include "../binary_expression.h"
 
 namespace math {
-    class add : binary_expression {
+    class add : public binary_expression {
      public:
         using binary_expression::binary_expression;
 
      protected:
-        inline number calculate(number left, number right) override {
-            return left + right;
+        inline number calculate(number lhs, number rhs) override {
+            return lhs + rhs;
         }
     };
 }
