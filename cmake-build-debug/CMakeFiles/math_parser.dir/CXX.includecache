@@ -10,14 +10,6 @@ E:/prog/math-parser/expression/arithmetics/add.h
 ../binary_expression.h
 E:/prog/math-parser/expression/binary_expression.h
 
-E:/prog/math-parser/expression/binary_expression.cpp
-cstddef
--
-utility
--
-binary_expression.h
-E:/prog/math-parser/expression/binary_expression.h
-
 E:/prog/math-parser/expression/binary_expression.h
 memory
 -
