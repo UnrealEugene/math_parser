@@ -1,0 +1,10 @@
+C:\Users\DNS\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\201.8743.17\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" E:\prog\math-parser
+CMake Warning (dev) at CMakeLists.txt:7 (add_executable):
+  Policy CMP0002 is not set: Logical target names must be globally unique.
+  Run "cmake --help-policy CMP0002" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: E:/prog/math-parser/cmake-build-debug
