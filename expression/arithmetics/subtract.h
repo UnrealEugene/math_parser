@@ -10,7 +10,11 @@ namespace math {
      public:
         using binary_expression::binary_expression;
 
-     protected:
+        inline std::string to_string() override {
+            return make_string("-");
+        }
+
+    protected:
         inline number calculate(number lhs, number rhs) override {
             return lhs - rhs;
         }

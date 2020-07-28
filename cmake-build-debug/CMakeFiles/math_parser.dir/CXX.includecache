@@ -10,6 +10,10 @@ E:/prog/math-parser/expression/arithmetics/add.h
 ../binary_expression.h
 E:/prog/math-parser/expression/binary_expression.h
 
+E:/prog/math-parser/expression/arithmetics/subtract.h
+../binary_expression.h
+E:/prog/math-parser/expression/binary_expression.h
+
 E:/prog/math-parser/expression/binary_expression.h
 memory
 -
@@ -31,4 +35,6 @@ expression/arithmetics/add.h
 E:/prog/math-parser/expression/arithmetics/add.h
 expression/value.h
 E:/prog/math-parser/expression/value.h
+expression/arithmetics/subtract.h
+E:/prog/math-parser/expression/arithmetics/subtract.h
 

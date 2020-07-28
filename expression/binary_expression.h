@@ -18,6 +18,7 @@ namespace math {
 
      protected:
         virtual number calculate(number, number) = 0;
+        std::string make_string(std::string const& sign);
 
         std::shared_ptr<expression> left_, right_;
     };

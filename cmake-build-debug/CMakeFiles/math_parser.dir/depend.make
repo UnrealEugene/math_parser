@@ -6,6 +6,7 @@ CMakeFiles/math_parser.dir/expression/binary_expression.cpp.obj: ../expression/b
 CMakeFiles/math_parser.dir/expression/binary_expression.cpp.obj: ../expression/expression.h
 
 CMakeFiles/math_parser.dir/main.cpp.obj: ../expression/arithmetics/add.h
+CMakeFiles/math_parser.dir/main.cpp.obj: ../expression/arithmetics/subtract.h
 CMakeFiles/math_parser.dir/main.cpp.obj: ../expression/binary_expression.h
 CMakeFiles/math_parser.dir/main.cpp.obj: ../expression/expression.h
 CMakeFiles/math_parser.dir/main.cpp.obj: ../expression/value.h

@@ -3,6 +3,7 @@
 //
 #include <cstddef>
 #include <utility>
+#include <sstream>
 
 #include "binary_expression.h"
 
@@ -31,6 +32,12 @@ namespace math {
 
     number binary_expression::evaluate() {
         return calculate(left_->evaluate(), right_->evaluate());
+    }
+
+    std::string binary_expression::make_string(std::string const& sign) {
+        std::stringstream res;
+        res << "(" << left_->to_string() << ") " << sign << " (" << right_->to_string() << ")";
+        return res.str();
     }
 }
 

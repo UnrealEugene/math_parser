@@ -7,6 +7,7 @@ CMakeFiles/math_parser.dir/expression/binary_expression.cpp.obj
  E:/prog/math-parser/expression/expression.h
 CMakeFiles/math_parser.dir/main.cpp.obj
  E:/prog/math-parser/expression/arithmetics/add.h
+ E:/prog/math-parser/expression/arithmetics/subtract.h
  E:/prog/math-parser/expression/binary_expression.h
  E:/prog/math-parser/expression/expression.h
  E:/prog/math-parser/expression/value.h

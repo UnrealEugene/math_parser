@@ -14,10 +14,15 @@ namespace math {
             return nullptr;
         }
 
+        inline std::string to_string() override {
+            return std::to_string(val_);
+        }
+
      protected:
         inline number evaluate() override {
             return val_;
         }
+
 
         number val_;
     };
