@@ -1,8 +1,22 @@
 //
 // Created by DNS on 29.07.20.
 //
+#pragma once
 
-#ifndef MATH_PARSER_DIVIDE_H
-#define MATH_PARSER_DIVIDE_H
+#include "../binary_expression.h"
 
-#endif //MATH_PARSER_DIVIDE_H
+namespace math {
+    class add : public binary_expression {
+    public:
+        using binary_expression::binary_expression;
+
+        inline std::string to_string() override {
+            return make_string("/");
+        }
+
+    protected:
+        inline number calculate(number lhs, number rhs) override {
+            return lhs / rhs;
+        }
+    };
+}
