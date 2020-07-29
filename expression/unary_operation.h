@@ -9,10 +9,10 @@
 namespace math {
     class unary_operation : public expression {
     public:
-        explicit unary_operation(std::shared_ptr<expression>);
+        explicit unary_operation(expression_ptr);
 
-        std::shared_ptr<expression> get_arg(size_t) override;
-        std::shared_ptr<expression> arg();
+        expression_ptr get_arg(size_t) override;
+        expression_ptr arg();
         number evaluate(var_table const&) const override;
         OpPriority priority() const override;
         bool is_associative() const override;

@@ -12,7 +12,7 @@ namespace math {
     class variable : public expression {
      public:
         inline explicit variable(std::string var) : var_(std::move(var)) { }
-        inline std::shared_ptr<expression> get_arg(size_t) override {
+        inline expression_ptr get_arg(size_t) override {
             return nullptr;
         }
 

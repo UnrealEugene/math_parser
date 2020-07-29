@@ -9,11 +9,11 @@
 namespace math {
     class binary_operation : public expression {
      public:
-        binary_operation(std::shared_ptr<expression>, std::shared_ptr<expression>);
+        binary_operation(expression_ptr, expression_ptr);
 
-        std::shared_ptr<expression> get_arg(size_t) override;
-        std::shared_ptr<expression> left();
-        std::shared_ptr<expression> right();
+        expression_ptr get_arg(size_t) override;
+        expression_ptr left();
+        expression_ptr right();
         number evaluate(var_table const&) const override;
 
      protected:

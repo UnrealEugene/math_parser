@@ -7,10 +7,10 @@
 #include "binary_operation.h"
 
 namespace math {
-    binary_operation::binary_operation(std::shared_ptr<expression> l, std::shared_ptr<expression> r) :
+    binary_operation::binary_operation(expression_ptr l, expression_ptr r) :
         left_(std::move(l)), right_(std::move(r)) { }
 
-    std::shared_ptr<expression> binary_operation::get_arg(size_t index) {
+    expression_ptr binary_operation::get_arg(size_t index) {
         switch (index) {
             case 0:
                 return left_;
@@ -21,11 +21,11 @@ namespace math {
         }
     }
 
-    std::shared_ptr<expression> binary_operation::left() {
+    expression_ptr binary_operation::left() {
         return left_;
     }
 
-    std::shared_ptr<expression> binary_operation::right() {
+    expression_ptr binary_operation::right() {
         return right_;
     }
 

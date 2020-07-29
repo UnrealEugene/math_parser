@@ -8,16 +8,16 @@
 #include "utility/definitions.h"
 
 namespace math {
-    unary_operation::unary_operation(std::shared_ptr<expression> a) :
+    unary_operation::unary_operation(expression_ptr a) :
             arg_(std::move(a)) { }
 
-    std::shared_ptr<expression> unary_operation::get_arg(size_t index) {
+    expression_ptr unary_operation::get_arg(size_t index) {
         if (index == 0)
             return arg_;
         return nullptr;
     }
 
-    std::shared_ptr<expression> unary_operation::arg() {
+    expression_ptr unary_operation::arg() {
         return arg_;
     }
 
