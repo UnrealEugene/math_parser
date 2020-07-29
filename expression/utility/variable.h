@@ -16,12 +16,20 @@ namespace math {
             return nullptr;
         }
 
-        inline std::string to_string() override {
+        inline std::string to_string() const override {
             return var_;
         }
 
+        inline OpPriority priority() const override {
+            return OpPriority::Highest;
+        }
+
+        inline bool is_associative() const override {
+            return true;
+        }
+
      protected:
-        inline number evaluate(var_table const& table) override {
+        inline number evaluate(var_table const& table) const override {
             return table.at(var_);
         }
 

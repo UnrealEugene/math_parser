@@ -3,19 +3,19 @@
 //
 #pragma once
 
-#include "../unary_expression.h"
+#include "../unary_operation.h"
 
 namespace math {
-    class negate : public unary_expression {
-    public:
-        using unary_expression::unary_expression;
+    class negate : public unary_operation {
+     public:
+        using unary_operation::unary_operation;
 
-        inline std::string to_string() override {
+        inline std::string to_string() const override {
             return make_string("-");
         }
 
-    protected:
-        inline number calculate(number arg) override {
+     protected:
+        inline number calculate(number arg) const override {
             return -arg;
         }
     };

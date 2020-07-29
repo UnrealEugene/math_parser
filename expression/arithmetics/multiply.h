@@ -3,19 +3,27 @@
 //
 #pragma once
 
-#include "../binary_expression.h"
+#include "../binary_operation.h"
 
 namespace math {
-    class add : public binary_expression {
+    class multiply : public binary_operation {
      public:
-        using binary_expression::binary_expression;
+        using binary_operation::binary_operation;
 
-        inline std::string to_string() override {
+        inline std::string to_string() const override {
             return make_string("*");
         }
 
-    protected:
-        inline number calculate(number lhs, number rhs) override {
+        inline OpPriority priority() const override {
+            return OpPriority::Multiply;
+        }
+
+        inline bool is_associative() const override {
+            return true;
+        }
+
+     protected:
+        inline number calculate(number lhs, number rhs) const override {
             return lhs * rhs;
         }
     };
