@@ -1,9 +1,9 @@
 ---
 имя: Request
 про: Idea for project
-название: ''
-лэйбл: ''
-закреплено за: ''
+название: 'name of request'
+лэйбл: 'label'
+закреплено за: 'Author'
 
 ---
 
