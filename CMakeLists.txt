@@ -8,7 +8,7 @@ add_executable(math_parser
         expression/expression.h
         expression/binary_expression.h expression/binary_expression.cpp
         expression/unary_expression.h expression/unary_expression.cpp
-        expression/value.h
+        expression/utility/value.h
         expression/arithmetics/add.h expression/arithmetics/subtract.h
         expression/arithmetics/multiply.h expression/arithmetics/divide.h
-        expression/arithmetics/negate.h)
+        expression/arithmetics/negate.h expression/utility/variable.h)

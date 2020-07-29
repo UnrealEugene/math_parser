@@ -14,7 +14,7 @@ namespace math {
         std::shared_ptr<expression> get_arg(size_t) override;
         std::shared_ptr<expression> left();
         std::shared_ptr<expression> right();
-        number evaluate() override;
+        number evaluate(var_table const&) override;
 
      protected:
         virtual number calculate(number, number) = 0;

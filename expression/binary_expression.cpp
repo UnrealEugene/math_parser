@@ -29,8 +29,8 @@ namespace math {
         return right_;
     }
 
-    number binary_expression::evaluate() {
-        return calculate(left_->evaluate(), right_->evaluate());
+    number binary_expression::evaluate(var_table const& table) {
+        return calculate(left_->evaluate(table), right_->evaluate(table));
     }
 
     std::string binary_expression::make_string(std::string const& sign) {

@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-#include "expression.h"
+#include "../expression.h"
 
 namespace math {
     class value : public expression {
@@ -20,7 +20,7 @@ namespace math {
         }
 
      protected:
-        inline number evaluate() override {
+        inline number evaluate(var_table const&) override {
             return val_;
         }
 

@@ -20,8 +20,8 @@ namespace math {
         return arg_;
     }
 
-    number unary_expression::evaluate() {
-        return calculate(arg_->evaluate());
+    number unary_expression::evaluate(var_table const& table) {
+        return calculate(arg_->evaluate(table));
     }
 
     std::string unary_expression::make_string(std::string const& sign) {
