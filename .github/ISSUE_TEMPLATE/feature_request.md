@@ -1,6 +1,6 @@
 ---
-имя: Request
-про: Idea for project
+Name: Request
+About: Idea for project
 название: 'name of request'
 лэйбл: 'label'
 закреплено за: 'Author'
