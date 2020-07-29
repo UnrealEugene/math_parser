@@ -1,6 +1,5 @@
-//
-// Created by DNS on 27.07.20.
-//
+// expression header file
+
 #pragma once
 
 namespace math {

@@ -1,7 +1,7 @@
-//
-// Created by DNS on 27.07.20.
-//
+// binary expression header file
+
 #pragma once
+
 #include <memory>
 
 #include "expression.h"

@@ -1,6 +1,5 @@
-//
-// Created by DNS on 27.07.20.
-//
+// binary expression cpp file
+
 #include <cstddef>
 #include <utility>
 #include <sstream>
@@ -40,4 +39,3 @@ namespace math {
         return res.str();
     }
 }
-

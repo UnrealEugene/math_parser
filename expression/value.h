@@ -1,8 +1,9 @@
-//
-// Created by DNS on 28.07.20.
-//
+// value header file
+
 #pragma once
+
 #include <memory>
+#include <string>
 
 #include "expression.h"
 
@@ -22,7 +23,6 @@ namespace math {
         inline number evaluate() override {
             return val_;
         }
-
 
         number val_;
     };
