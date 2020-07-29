@@ -15,6 +15,6 @@ namespace math {
         virtual number evaluate(var_table const&) const = 0;
         virtual std::string to_string() const = 0;
         virtual OpPriority priority() const = 0;
-        virtual bool is_associative() const = 0;
+        virtual bool is_commutative() const = 0;
     };
 }

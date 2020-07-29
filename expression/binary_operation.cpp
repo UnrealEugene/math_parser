@@ -46,7 +46,7 @@ namespace math {
         add_member_brackets_(res, left_, less_priority(*left_, *this));
         res << " " << sign << " ";
         add_member_brackets_(res, right_, !(less_priority(*this, *right_) ||
-                (equal_priority(*this, *right_) && is_associative())));
+                (equal_priority(*this, *right_) && is_commutative())));
         return res.str();
     }
 }

@@ -23,7 +23,7 @@ namespace math {
             return OpPriority::Highest;
         }
 
-        inline bool is_associative() const override {
+        inline bool is_commutative() const override {
             return true;
         }
 

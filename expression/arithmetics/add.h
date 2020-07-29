@@ -18,7 +18,7 @@ namespace math {
             return OpPriority::Add;
         }
 
-        inline bool is_associative() const override {
+        inline bool is_commutative() const override {
             return true;
         }
 

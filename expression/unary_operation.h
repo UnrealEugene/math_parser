@@ -15,7 +15,7 @@ namespace math {
         expression_ptr arg();
         number evaluate(var_table const&) const override;
         OpPriority priority() const override;
-        bool is_associative() const override;
+        bool is_commutative() const override;
 
     protected:
         virtual number calculate(number) const = 0;

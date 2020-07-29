@@ -29,7 +29,7 @@ namespace math {
         return OpPriority::Unary;
     }
 
-    bool unary_operation::is_associative() const {
+    bool unary_operation::is_commutative() const {
         return true;
     }
 
