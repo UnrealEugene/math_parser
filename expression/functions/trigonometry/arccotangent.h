@@ -2,20 +2,20 @@
 
 #include <cmath>
 
-#include "../unary_operation.h"
+#include "../../unary_operation.h"
 
 namespace math {
-    class exponential : public unary_operation {
+    class arccotangent : public unary_operation {
     public:
         using unary_operation::unary_operation;
 
         inline std::string to_string() const override {
-            return make_string("exp");
+            return make_string("arcctg");
         }
 
     protected:
         inline number calculate(number arg) const override {
-            return exp(arg);
+            return acos(0) - atan(arg);
         }
     };
 }
