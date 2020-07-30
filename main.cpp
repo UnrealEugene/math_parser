@@ -47,5 +47,10 @@ int main() {
     test_unary_operation<math::tangent_h>(1);
     test_unary_operation<math::cotangent_h>(1);
 
+    test_unary_operation<math::arsine_h>(1);
+    test_unary_operation<math::arcosine_h>(1);
+    test_unary_operation<math::artangent_h>(1);
+    test_unary_operation<math::arcotangent_h>(1);
+
     return 0;
 }
