@@ -20,6 +20,7 @@ namespace math {
     enum OpPriority {
         Add = 0,
         Multiply,
+        Power,
         Unary,
         Highest
     };
