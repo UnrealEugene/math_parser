@@ -28,4 +28,5 @@ add_executable(math_parser
         expression/utility/definitions.cpp 
 
         expression/functions/power.h 
-        expression/functions/natural_logarithm.h)
+        expression/functions/natural_logarithm.h 
+        expression/functions/exponential.h)

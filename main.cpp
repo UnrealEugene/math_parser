@@ -7,6 +7,7 @@
 #include "expression/utility/variable.h"
 #include "expression/functions/power.h"
 #include "expression/functions/natural_logarithm.h"
+#include "expression/functions/exponential.h"
 
 int main() {
     auto x = std::make_shared<math::add>(std::make_shared<math::value>(2), std::make_shared<math::variable>("x"));
@@ -29,6 +30,12 @@ int main() {
 
     auto b = std::make_shared<math::natural_logarithm>(std::make_shared<math::value>(2.7));
     std::cout << b->to_string() << " = " << b->evaluate({ }) << std::endl;
+
+    auto c = std::make_shared<math::exponential>(std::make_shared<math::value>(1));
+    std::cout << c->to_string() << " = " << c->evaluate({ }) << std::endl;
+
+    auto d = std::make_shared<math::natural_logarithm>(c);
+    std::cout << d->to_string() << " = " << d->evaluate({ }) << std::endl;
 
     return 0;
 }
