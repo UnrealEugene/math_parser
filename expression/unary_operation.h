@@ -12,8 +12,11 @@ namespace math {
         explicit unary_operation(expression_ptr);
 
         expression_ptr get_arg(size_t) override;
+        const_expression_ptr get_arg(size_t) const override;
         expression_ptr arg();
+        const_expression_ptr arg() const;
         number evaluate(var_table const&) const override;
+        bool equals(expression const&) const override;
         OpPriority priority() const override;
         bool is_commutative() const override;
 

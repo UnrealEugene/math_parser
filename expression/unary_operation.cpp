@@ -3,6 +3,8 @@
 #include <cstddef>
 #include <utility>
 #include <sstream>
+#include <typeinfo>
+#include <typeindex>
 
 #include "unary_operation.h"
 #include "utility/definitions.h"
@@ -17,12 +19,29 @@ namespace math {
         return nullptr;
     }
 
+    const_expression_ptr unary_operation::get_arg(size_t index) const {
+        if (index == 0)
+            return arg_;
+        return nullptr;
+    }
+
     expression_ptr unary_operation::arg() {
+        return arg_;
+    }
+
+    const_expression_ptr unary_operation::arg() const {
         return arg_;
     }
 
     number unary_operation::evaluate(var_table const& table) const {
         return calculate(arg_->evaluate(table));
+    }
+
+    bool unary_operation::equals(expression const& rhs) const {
+        if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
+            return false;
+        auto const& t_rhs = static_cast<unary_operation const&>(rhs);
+        return arg_->equals(*t_rhs.arg());
     }
 
     OpPriority unary_operation::priority() const {

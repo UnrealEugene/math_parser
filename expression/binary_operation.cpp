@@ -3,6 +3,8 @@
 #include <cstddef>
 #include <utility>
 #include <sstream>
+#include <typeinfo>
+#include <typeindex>
 
 #include "binary_operation.h"
 
@@ -21,7 +23,22 @@ namespace math {
         }
     }
 
+    const_expression_ptr binary_operation::get_arg(size_t index) const {
+        switch (index) {
+            case 0:
+                return left_;
+            case 1:
+                return right_;
+            default:
+                return nullptr;
+        }
+    }
+
     expression_ptr binary_operation::left() {
+        return left_;
+    }
+
+    const_expression_ptr binary_operation::left() const {
         return left_;
     }
 
@@ -29,8 +46,19 @@ namespace math {
         return right_;
     }
 
+    const_expression_ptr binary_operation::right() const {
+        return right_;
+    }
+
     number binary_operation::evaluate(var_table const& table) const {
         return calculate(left_->evaluate(table), right_->evaluate(table));
+    }
+
+    bool binary_operation::equals(expression const& rhs) const {
+        if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
+            return false;
+        auto const& t_rhs = static_cast<binary_operation const&>(rhs);
+        return left_->equals(*t_rhs.left()) && right_->equals(*t_rhs.right());
     }
 
     static void add_member_brackets_(std::stringstream& ss, expression_ptr const& p, bool need_brackets) {

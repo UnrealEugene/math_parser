@@ -21,6 +21,5 @@ int main() {
             )
     );
     std::cout << z->to_string() << " = " << z->evaluate({ }) << std::endl;
-
     return 0;
 }
