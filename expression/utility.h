@@ -1,5 +1,5 @@
 #pragma once
 
-#include "expression/utility/value.h"
-#include "expression/utility/variable.h"
-#include "expression/utility/definitions.h"
+#include "utility/value.h"
+#include "utility/variable.h"
+#include "utility/definitions.h"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "expression/arithmetics/negate.h"
-#include "expression/arithmetics/add.h"
-#include "expression/arithmetics/subtract.h"
-#include "expression/arithmetics/multiply.h"
-#include "expression/arithmetics/divide.h"
+#include "arithmetics/negate.h"
+#include "arithmetics/add.h"
+#include "arithmetics/subtract.h"
+#include "arithmetics/multiply.h"
+#include "arithmetics/divide.h"

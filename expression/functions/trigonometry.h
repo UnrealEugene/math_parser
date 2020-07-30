@@ -1,11 +1,11 @@
 #pragma once
 
-#include "expression/functions/trigonometry/sine.h"
-#include "expression/functions/trigonometry/cosine.h"
-#include "expression/functions/trigonometry/tangent.h"
-#include "expression/functions/trigonometry/cotangent.h"
+#include "trigonometry/sine.h"
+#include "trigonometry/cosine.h"
+#include "trigonometry/tangent.h"
+#include "trigonometry/cotangent.h"
 
-#include "expression/functions/trigonometry/arcsine.h"
-#include "expression/functions/trigonometry/arccosine.h"
-#include "expression/functions/trigonometry/arctangent.h"
-#include "expression/functions/trigonometry/arccotangent.h"
+#include "trigonometry/arcsine.h"
+#include "trigonometry/arccosine.h"
+#include "trigonometry/arctangent.h"
+#include "trigonometry/arccotangent.h"
