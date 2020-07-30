@@ -23,7 +23,7 @@ namespace math {
 
     protected:
         /*
-        !!!Ожидается поддержка и int64_t и double!!!
+        !!!Expecting support int64_t and double!!!
         inline number calculate(number lhs, number rhs) const override {
             number result = 1;
             while (rhs > 0) {
