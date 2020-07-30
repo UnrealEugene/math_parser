@@ -1,0 +1,31 @@
+#pragma once
+
+#include "../binary_operation.h"
+
+namespace math {
+    class power : public binary_operation {
+    public:
+        using binary_operation::binary_operation;
+
+        inline std::string to_string() const override {
+            return make_string("**");
+        }
+
+        inline OpPriority priority() const override {
+            return OpPriority::Power;
+        }
+
+        inline bool is_commutative() const override {
+            return false;
+        }
+
+    protected:
+        inline number calculate(number lhs, number rhs) const override {
+            number answer = 1;
+            for (size_t i = 1; i <= rhs; i++) {
+                answer *= lhs;
+            }
+            return answer;
+        }
+    };
+}

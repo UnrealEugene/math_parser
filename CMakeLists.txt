@@ -11,4 +11,4 @@ add_executable(math_parser
         expression/utility/value.h
         expression/arithmetics/add.h expression/arithmetics/subtract.h
         expression/arithmetics/multiply.h expression/arithmetics/divide.h
-        expression/arithmetics/negate.h expression/utility/variable.h expression/utility/definitions.h expression/utility/definitions.cpp)
+        expression/arithmetics/negate.h expression/utility/variable.h expression/utility/definitions.h expression/utility/definitions.cpp expression/functions/power.h)

@@ -5,6 +5,7 @@
 #include "expression/arithmetics/multiply.h"
 #include "expression/utility/value.h"
 #include "expression/utility/variable.h"
+#include "expression/functions/power.h"
 
 int main() {
     auto x = std::make_shared<math::add>(std::make_shared<math::value>(2), std::make_shared<math::variable>("x"));
@@ -21,5 +22,9 @@ int main() {
             )
     );
     std::cout << z->to_string() << " = " << z->evaluate({ }) << std::endl;
+
+    auto a = std::make_shared<math::power>(std::make_shared<math::value>(2), std::make_shared<math::value>(4));
+    std::cout << a->to_string() << " = " << a->evaluate({ }) << std::endl;
+
     return 0;
 }
