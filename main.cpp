@@ -6,6 +6,7 @@
 #include "expression/utility/value.h"
 #include "expression/utility/variable.h"
 #include "expression/functions/power.h"
+#include "expression/functions/natural_logarithm.h"
 
 int main() {
     auto x = std::make_shared<math::add>(std::make_shared<math::value>(2), std::make_shared<math::variable>("x"));
@@ -25,6 +26,9 @@ int main() {
 
     auto a = std::make_shared<math::power>(std::make_shared<math::value>(2), std::make_shared<math::value>(4));
     std::cout << a->to_string() << " = " << a->evaluate({ }) << std::endl;
+
+    auto b = std::make_shared<math::natural_logarithm>(std::make_shared<math::value>(2.7));
+    std::cout << b->to_string() << " = " << b->evaluate({ }) << std::endl;
 
     return 0;
 }

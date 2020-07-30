@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "../binary_operation.h"
 
 namespace math {
@@ -20,6 +22,8 @@ namespace math {
         }
 
     protected:
+        /*
+        !!!Ожидается поддержка и int64_t и double!!!
         inline number calculate(number lhs, number rhs) const override {
             number result = 1;
             while (rhs > 0) {
@@ -30,6 +34,11 @@ namespace math {
                 rhs /= 2;
             }
             return result;
+        }
+        */
+
+        inline number calculate(number lhs, number rhs) const override {
+            return pow(lhs, rhs);
         }
     };
 }
