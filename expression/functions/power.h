@@ -21,11 +21,15 @@ namespace math {
 
     protected:
         inline number calculate(number lhs, number rhs) const override {
-            number answer = 1;
-            for (size_t i = 1; i <= rhs; i++) {
-                answer *= lhs;
+            number result = 1;
+            while (rhs > 0) {
+                if (rhs % 2 == 0) { 
+                    result *= lhs;
+                }
+                lhs *= lhs;
+                rhs /= 2;
             }
-            return answer;
+            return result;
         }
     };
 }
