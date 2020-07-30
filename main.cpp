@@ -1,25 +1,8 @@
 #include <iostream>
 
-#include "expression/arithmetics/add.h"
-#include "expression/arithmetics/subtract.h"
-#include "expression/arithmetics/multiply.h"
-
-#include "expression/utility/value.h"
-#include "expression/utility/variable.h"
-
-#include "expression/functions/power.h"
-#include "expression/functions/natural_logarithm.h"
-#include "expression/functions/exponent.h"
-
-#include "expression/functions/trigonometry/sine.h"
-#include "expression/functions/trigonometry/cosine.h"
-#include "expression/functions/trigonometry/tangent.h"
-#include "expression/functions/trigonometry/cotangent.h"
-
-#include "expression/functions/trigonometry/arcsine.h"
-#include "expression/functions/trigonometry/arccosine.h"
-#include "expression/functions/trigonometry/arctangent.h"
-#include "expression/functions/trigonometry/arccotangent.h"
+#include "expression/arithmetics.h"
+#include "expression/utility.h"
+#include "expression/functions.h"
 
 template <typename T>
 void test_unary_operation(double x) {
@@ -58,6 +41,11 @@ int main() {
     test_unary_operation<math::arccosine>(1);
     test_unary_operation<math::arctangent>(1);
     test_unary_operation<math::arccotangent>(1);
+
+    test_unary_operation<math::sine_h>(1);
+    test_unary_operation<math::cosine_h>(1);
+    test_unary_operation<math::tangent_h>(1);
+    test_unary_operation<math::cotangent_h>(1);
 
     return 0;
 }
