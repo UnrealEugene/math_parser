@@ -3,7 +3,6 @@
 #include <cstddef>
 #include <utility>
 #include <sstream>
-#include <typeinfo>
 #include <typeindex>
 
 #include "binary_operation.h"

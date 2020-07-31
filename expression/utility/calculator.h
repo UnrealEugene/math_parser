@@ -50,14 +50,6 @@ namespace math {
 
     template <typename T>
     struct calculator : base_calculator {
-//        static number apply_unary(std::function<T(T)> const& f, number const& x) {
-//            return number(f(x.value<T>()));
-//        }
-//
-//        static number apply_binary(std::function<T(T, T)> const& f, number const& l, number const& r) {
-//            return number(f(l.value<T>(), r.value<T>()));
-//        }
-
         bool equals(number const& l, number const& r) const override {
             try {
                 return l.value<T>() == r.value<T>();
