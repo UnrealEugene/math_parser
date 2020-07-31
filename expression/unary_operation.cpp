@@ -3,11 +3,9 @@
 #include <cstddef>
 #include <utility>
 #include <sstream>
-#include <typeinfo>
 #include <typeindex>
 
 #include "unary_operation.h"
-#include "utility/definitions.h"
 
 namespace math {
     unary_operation::unary_operation(expression_ptr a) :
