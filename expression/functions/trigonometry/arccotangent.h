@@ -9,13 +9,13 @@ namespace math {
     public:
         using unary_operation::unary_operation;
 
-        inline std::string to_string() const override {
-            return make_string("arcctg");
+        inline std::string to_string(base_calculator const& calc) const override {
+            return make_string("arcctg", calc);
         }
 
     protected:
-        inline number calculate(number arg) const override {
-            return acos(0) - atan(arg);
+        inline number calculate(number arg, base_calculator const& calc) const override {
+            return calc.arccotangent(arg);
         }
     };
 }

@@ -9,8 +9,8 @@ namespace math {
     public:
         using binary_operation::binary_operation;
 
-        inline std::string to_string() const override {
-            return make_string("**");
+        inline std::string to_string(base_calculator const& calc) const override {
+            return make_string("**", calc);
         }
 
         inline OpPriority priority() const override {
@@ -22,23 +22,8 @@ namespace math {
         }
 
     protected:
-        /*
-        !!!Expecting support int64_t and double!!!
-        inline number calculate(number lhs, number rhs) const override {
-            number result = 1;
-            while (rhs > 0) {
-                if (rhs % 2 == 0) { 
-                    result *= lhs;
-                }
-                lhs *= lhs;
-                rhs /= 2;
-            }
-            return result;
-        }
-        */
-
-        inline number calculate(number lhs, number rhs) const override {
-            return pow(lhs, rhs);
+        inline number calculate(number lhs, number rhs, base_calculator const& calc) const override {
+            return calc.power(lhs, rhs);
         }
     };
 }

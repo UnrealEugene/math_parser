@@ -25,8 +25,8 @@ namespace math {
             return val_;
         }
 
-        inline std::string to_string() const override {
-            return std::to_string(val_);
+        inline std::string to_string(base_calculator const& calc) const override {
+            return calc.to_string(val_);
         }
 
         inline OpPriority priority() const override {
@@ -37,15 +37,15 @@ namespace math {
             return true;
         }
 
-        inline number evaluate(var_table const&) const override {
+        inline number evaluate(var_table const&, base_calculator const&) const override {
             return val_;
         }
 
-        inline bool equals(expression const& rhs) const override {
+        inline bool equals(expression const& rhs, base_calculator const& calc) const override {
             if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
                 return false;
             auto const& t_rhs = static_cast<value const&>(rhs);
-            return t_rhs.val() == val_;
+            return calc.equals(val_, t_rhs.val());
         }
 
     protected:

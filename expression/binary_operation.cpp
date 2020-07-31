@@ -50,30 +50,31 @@ namespace math {
         return right_;
     }
 
-    number binary_operation::evaluate(var_table const& table) const {
-        return calculate(left_->evaluate(table), right_->evaluate(table));
+    number binary_operation::evaluate(var_table const& table, base_calculator const& calc) const {
+        return calculate(left_->evaluate(table, calc), right_->evaluate(table, calc), calc);
     }
 
-    bool binary_operation::equals(expression const& rhs) const {
+    bool binary_operation::equals(expression const& rhs, base_calculator const& calc) const {
         if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
             return false;
         auto const& t_rhs = static_cast<binary_operation const&>(rhs);
-        return left_->equals(*t_rhs.left()) && right_->equals(*t_rhs.right());
+        return left_->equals(*t_rhs.left(), calc) && right_->equals(*t_rhs.right(), calc);
     }
 
-    static void add_member_brackets_(std::stringstream& ss, expression_ptr const& p, bool need_brackets) {
+    static void add_member_brackets_(
+            std::stringstream& ss, expression_ptr const& p, base_calculator const& calc, bool need_brackets) {
         if (need_brackets)
             ss << "(";
-        ss << p->to_string();
+        ss << p->to_string(calc);
         if (need_brackets)
             ss << ")";
     }
 
-    std::string binary_operation::make_string(std::string const& sign) const {
+    std::string binary_operation::make_string(std::string const& sign, base_calculator const& calc) const {
         std::stringstream res;
-        add_member_brackets_(res, left_, less_priority(*left_, *this));
+        add_member_brackets_(res, left_, calc, less_priority(*left_, *this));
         res << " " << sign << " ";
-        add_member_brackets_(res, right_, !(less_priority(*this, *right_) ||
+        add_member_brackets_(res, right_, calc, !(less_priority(*this, *right_) ||
                 (equal_priority(*this, *right_) && is_commutative())));
         return res.str();
     }
