@@ -9,13 +9,13 @@ namespace math {
     public:
         using unary_operation::unary_operation;
 
-        inline std::string to_string() const override {
-            return make_string("ctgh");
+        inline std::string to_string(base_calculator const& calc) const override {
+            return make_string("ctgh", calc);
         }
         
     protected:
-        inline number calculate(number arg) const override {
-            return 1 / tanh(arg);
+        inline number calculate(number arg, base_calculator const& calc) const override {
+            return calc.cotangent_h(arg);
         }
     };
 }

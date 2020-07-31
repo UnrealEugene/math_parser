@@ -9,13 +9,13 @@ namespace math {
     public:
         using unary_operation::unary_operation;
 
-        inline std::string to_string() const override {
-            return make_string("ln");
+        inline std::string to_string(base_calculator const& calc) const override {
+            return make_string("ln", calc);
         }
 
     protected:
-        inline number calculate(number arg) const override {
-            return log(arg);
+        inline number calculate(number arg, base_calculator const& calc) const override {
+            return calc.natural_logarithm(arg);
         }
     };
 }

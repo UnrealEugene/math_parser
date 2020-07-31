@@ -8,10 +8,10 @@
 #include <string>
 
 namespace math {
+    struct number;
     class expression;
     using expression_ptr = std::shared_ptr<expression>;
     using const_expression_ptr = std::shared_ptr<expression const>;
-    using number = double;
     using var_table = std::map<std::string, number>;
 
     bool less_priority(expression const&, expression const&);
