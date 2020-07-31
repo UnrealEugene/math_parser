@@ -1,5 +1,5 @@
 # MathParser
-| **`Code quality`**| **`Projects`** | **`Issues`**|
+| **`Качество кода`**| **`Проекты`** | **`Вопросы`**|
 |-|-|-|
 |[![Codacy Badge](https://app.codacy.com/project/badge/Grade/47529f2cfd11419e80a4a119d7f86fab)](https://www.codacy.com/manual/UnrealEugene/math_parser?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=UnrealEugene/math_parser&amp;utm_campaign=Badge_Grade)| [![Project](https://img.shields.io/badge/api-reference-black.svg)](https://github.com/UnrealEugene/math_parser/projects/1) |[![Issues](https://img.shields.io/badge/api-reference-blue.svg)](https://github.com/UnrealEugene/math_parser/issues)|
 
