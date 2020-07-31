@@ -4,11 +4,11 @@
 #include "expression/utility.h"
 #include "expression/functions.h"
 
-template <typename T>
-void test_unary_operation(double x) {
-    auto calc = math::calculator<double>();
+template <typename T, typename U>
+void test_unary_operation(U x) {
+    auto calc = math::calculator<U>();
     auto p = std::make_shared<T>(std::make_shared<math::value>(x));
-    std::cout << p->to_string(calc) << " = " << p->evaluate({ }, calc).template value<double>() << std::endl;
+    std::cout << p->to_string(calc) << " = " << p->evaluate({ }, calc).template value<U>() << std::endl;
 }
 
 int main() {
@@ -32,28 +32,28 @@ int main() {
     auto a = std::make_shared<math::power>(std::make_shared<math::value>(2.0), std::make_shared<math::value>(4.0));
     std::cout << a->to_string(calc) << " = " << a->evaluate({ }, calc).value<double>() << std::endl;
 
-    test_unary_operation<math::natural_logarithm>(2);
-    test_unary_operation<math::exponent>(2);
+    test_unary_operation<math::natural_logarithm>(2.0);
+    test_unary_operation<math::exponent>(2.0);
 
-    test_unary_operation<math::sine>(1);
-    test_unary_operation<math::cosine>(1);
-    test_unary_operation<math::tangent>(1);
-    test_unary_operation<math::cotangent>(1);
+    test_unary_operation<math::sine>(1.0);
+    test_unary_operation<math::cosine>(1.0);
+    test_unary_operation<math::tangent>(1.0);
+    test_unary_operation<math::cotangent>(1.0);
 
-    test_unary_operation<math::arcsine>(1);
-    test_unary_operation<math::arccosine>(1);
-    test_unary_operation<math::arctangent>(1);
-    test_unary_operation<math::arccotangent>(1);
+    test_unary_operation<math::arcsine>(1.0);
+    test_unary_operation<math::arccosine>(1.0);
+    test_unary_operation<math::arctangent>(1.0);
+    test_unary_operation<math::arccotangent>(1.0);
 
-    test_unary_operation<math::sine_h>(1);
-    test_unary_operation<math::cosine_h>(1);
-    test_unary_operation<math::tangent_h>(1);
-    test_unary_operation<math::cotangent_h>(1);
+    test_unary_operation<math::sine_h>(1.0);
+    test_unary_operation<math::cosine_h>(1.0);
+    test_unary_operation<math::tangent_h>(1.0);
+    test_unary_operation<math::cotangent_h>(1.0);
 
-    test_unary_operation<math::arsine_h>(1);
-    test_unary_operation<math::arcosine_h>(1);
-    test_unary_operation<math::artangent_h>(1);
-    test_unary_operation<math::arcotangent_h>(1);
+    test_unary_operation<math::arsine_h>(1.0);
+    test_unary_operation<math::arcosine_h>(1.0);
+    test_unary_operation<math::artangent_h>(1.0);
+    test_unary_operation<math::arcotangent_h>(1.0);
 
     return 0;
 }
