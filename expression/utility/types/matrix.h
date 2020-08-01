@@ -40,14 +40,13 @@ namespace math {
         friend bool operator==(matrix<V> const&, matrix<V> const&);
         template <typename V>
         friend bool operator!=(matrix<V> const&, matrix<V> const&);
-        template <typename V>
-        friend matrix<V> transpose(matrix<V>);
 
         template <typename V>
         friend std::ostream& operator<<(std::ostream&, matrix<V> const&);
 
         static matrix null(size_t, size_t);
         static matrix identity(size_t);
+        static matrix transpose(matrix const&);
 
     private:
         std::vector<std::vector<T>> data_;
@@ -135,7 +134,7 @@ namespace math {
     template <typename T>
     matrix<T>::operator T() const {
         if (height() != 1 || width() != 1)
-            throw std::runtime_error("Bad math::matrix unfold to number");
+            throw std::runtime_error("Bad math::matrix cast to number");
         return data_[0][0];
     }
 
@@ -182,16 +181,6 @@ namespace math {
     }
 
     template <typename T>
-    matrix<T> transpose(matrix<T> arg) {
-        for (size_t i = 0; i < arg.height(); i++) {
-            for (size_t j = i + 1; j < arg.width(); j++) {
-                std::swap(arg[i][j], arg[j][i]);
-            }
-        }
-        return arg;
-    }
-
-    template <typename T>
     std::ostream& operator<<(std::ostream& out, matrix<T> const& m) {
         return out << to_string(m);
     }
@@ -208,5 +197,16 @@ namespace math {
             res[i][i] = 1;
         }
         return res;
+    }
+
+    template <typename T>
+    matrix<T> matrix<T>::transpose(matrix<T> const& arg) {
+        matrix<T> t(std::vector<std::vector<T>>(arg.width(), std::vector<T>(arg.height())));
+        for (size_t i = 0; i < arg.height(); i++) {
+            for (size_t j = 0; j < arg.width(); j++) {
+                t.data_[j][i] = arg.data_[i][j];
+            }
+        }
+        return t;
     }
 }

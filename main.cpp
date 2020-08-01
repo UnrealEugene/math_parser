@@ -70,5 +70,8 @@ int main() {
 
     std::cout << c->to_string() << " = " << c->evaluate({}).unfold<int>() << std::endl;
 
+    auto mm = math::matrix<int>({{1, 2}, {3, 4}, {5, 6}});
+    std::cout << mm << "\t\t" << math::matrix<int>::transpose(mm) << std::endl;
+
     return 0;
 }
