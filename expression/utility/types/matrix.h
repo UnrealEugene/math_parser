@@ -25,6 +25,7 @@ namespace math {
         matrix& operator+=(matrix const&);
         matrix& operator-=(matrix const&);
         matrix& operator*=(matrix const&);
+        operator T() const;
 
         template <typename V>
         friend std::string to_string(matrix<V> const&);
@@ -129,6 +130,13 @@ namespace math {
         }
         data_ = new_data_;
         return *this;
+    }
+
+    template <typename T>
+    matrix<T>::operator T() const {
+        if (height() != 1 || width() != 1)
+            throw std::runtime_error("Bad math::matrix cast to number");
+        return data_[0][0];
     }
 
     template <typename T>

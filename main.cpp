@@ -61,12 +61,14 @@ int main() {
     test_unary_operation<math::artangent_h>(1.0);
     test_unary_operation<math::arcotangent_h>(1.0);
 
-    auto m1 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{1, 2}, {3, 4}, {5, 6}}));
-    auto m2 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{1, 2, 3}, {4, 5, 6}}));
+    auto m1 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{1, 2, 3}}));
+    auto m2 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{1}, {2}, {3}}));
 
     auto b = std::make_shared<math::multiply<math::matrix<int>, math::matrix<int>>>(m1, m2);
 
-    std::cout << b->to_string() << " = " << b->evaluate({ }).cast<math::matrix<int>>() << std::endl;
+    auto c = std::make_shared<math::cast<int, math::matrix<int>>>(b);
+
+    std::cout << c->to_string() << " = " << c->evaluate({ }).cast<int>() << std::endl;
 
     return 0;
 }
