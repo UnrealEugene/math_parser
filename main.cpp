@@ -27,16 +27,16 @@ int main() {
                     std::make_shared<math::constant<double>>(2.0)
             )
     );
-    std::cout << z->to_string() << " = " << z->evaluate({}).unfold<double>() << std::endl;
+    std::cout << z->to_string() << " = " << z->evaluate({ }).unfold<double>() << std::endl;
 
     auto a = std::make_shared<math::power<int, int>>(
             std::make_shared<math::constant<int>>(2),
             std::make_shared<math::constant<int>>(4)
     );
-    std::cout << a->to_string() << " = " << a->evaluate({}).unfold<double>() << std::endl;
+    std::cout << a->to_string() << " = " << a->evaluate({ }).unfold<double>() << std::endl;
 
     auto aa = std::make_shared<math::sine<double>>(z);
-    std::cout << aa->to_string() << " = " << aa->evaluate({}).unfold<double>() << std::endl;
+    std::cout << aa->to_string() << " = " << aa->evaluate({ }).unfold<double>() << std::endl;
 
     test_unary_operation<math::natural_logarithm>(2.0);
     test_unary_operation<math::exponent>(2.0);
@@ -61,14 +61,14 @@ int main() {
     test_unary_operation<math::artangent_h>(1.0);
     test_unary_operation<math::arcotangent_h>(1.0);
 
-    auto m1 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{1, 2, 3}}));
-    auto m2 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{1}, {2}, {3}}));
+    auto m1 = std::make_shared<math::constant<math::matrix<int>>>(math::row<int>({1, 2, 3}));
+    auto m2 = std::make_shared<math::constant<math::matrix<int>>>(math::column<int>({1, 2, 3}));
 
     auto b = std::make_shared<math::multiply<math::matrix<int>, math::matrix<int>>>(m1, m2);
 
     auto c = std::make_shared<math::cast<int, math::matrix<int>>>(b);
 
-    std::cout << c->to_string() << " = " << c->evaluate({}).unfold<int>() << std::endl;
+    std::cout << c->to_string() << " = " << c->evaluate({ }).unfold<int>() << std::endl;
 
     auto mm = math::matrix<int>({{1, 2}, {3, 4}, {5, 6}});
     std::cout << mm << "\t\t" << math::matrix<int>::transpose(mm) << std::endl;

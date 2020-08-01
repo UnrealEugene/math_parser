@@ -209,4 +209,19 @@ namespace math {
         }
         return t;
     }
+
+
+    template <typename T>
+    matrix<T> row(std::vector<T> const& data) {
+        return matrix<T>({data});
+    }
+
+    template <typename T>
+    matrix<T> column(std::vector<T> const& data) {
+        std::vector<std::vector<T>> res;
+        for (T const& v : data) {
+            res.emplace_back(1, v);
+        }
+        return matrix<T>(res);
+    }
 }
