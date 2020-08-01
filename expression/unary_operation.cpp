@@ -51,7 +51,7 @@ namespace math {
     }
 
     std::string unary_operation::make_string(std::string const& sign) const {
-        bool need_brackets = less_priority(*arg_, *this);
+        bool need_brackets = less_priority(*arg_, *this) && !sign.empty();
         std::stringstream res;
         res << sign;
         if (need_brackets) {
