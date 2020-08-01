@@ -13,7 +13,7 @@ namespace math {
     struct string_calculator {
         static std::string to_string(value const& x) {
             using std::to_string;
-            return to_string(x.cast<T>());
+            return to_string(x.unfold<T>());
         }
     };
 }

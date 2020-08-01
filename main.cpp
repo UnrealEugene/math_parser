@@ -7,7 +7,7 @@
 template <template <typename> typename U, typename V>
 void test_unary_operation(V x) {
     auto p = std::make_shared<U<V>>(std::make_shared<math::constant<V>>(x));
-    std::cout << p->to_string() << " = " << p->evaluate({ }).template cast<V>() << std::endl;
+    std::cout << p->to_string() << " = " << p->evaluate({ }).template unfold<V>() << std::endl;
 }
 
 int main() {
@@ -15,10 +15,10 @@ int main() {
             std::make_shared<math::constant<double>>(2.0),
             std::make_shared<math::variable>("x")
     );
-    std::cout << x->to_string() << " = " << x->evaluate({{"x", 3.0}}).cast<double>() << std::endl;
+    std::cout << x->to_string() << " = " << x->evaluate({{"x", 3.0}}).unfold<double>() << std::endl;
 
     auto y = std::make_shared<math::subtract<double, double>>(std::make_shared<math::constant<double>>(9.0), x);
-    std::cout << y->to_string() << " = " << y->evaluate({{"x", 3.0}}).cast<double>() << std::endl;
+    std::cout << y->to_string() << " = " << y->evaluate({{"x", 3.0}}).unfold<double>() << std::endl;
 
     auto z = std::make_shared<math::add<int, double>>(
             std::make_shared<math::constant<int>>(2),
@@ -27,16 +27,16 @@ int main() {
                     std::make_shared<math::constant<double>>(2.0)
             )
     );
-    std::cout << z->to_string() << " = " << z->evaluate({ }).cast<double>() << std::endl;
+    std::cout << z->to_string() << " = " << z->evaluate({}).unfold<double>() << std::endl;
 
     auto a = std::make_shared<math::power<int, int>>(
             std::make_shared<math::constant<int>>(2),
             std::make_shared<math::constant<int>>(4)
     );
-    std::cout << a->to_string() << " = " << a->evaluate({ }).cast<double>() << std::endl;
+    std::cout << a->to_string() << " = " << a->evaluate({}).unfold<double>() << std::endl;
 
     auto aa = std::make_shared<math::sine<double>>(z);
-    std::cout << aa->to_string() << " = " << aa->evaluate({ }).cast<double>() << std::endl;
+    std::cout << aa->to_string() << " = " << aa->evaluate({}).unfold<double>() << std::endl;
 
     test_unary_operation<math::natural_logarithm>(2.0);
     test_unary_operation<math::exponent>(2.0);
@@ -68,7 +68,7 @@ int main() {
 
     auto c = std::make_shared<math::cast<int, math::matrix<int>>>(b);
 
-    std::cout << c->to_string() << " = " << c->evaluate({ }).cast<int>() << std::endl;
+    std::cout << c->to_string() << " = " << c->evaluate({}).unfold<int>() << std::endl;
 
     return 0;
 }
