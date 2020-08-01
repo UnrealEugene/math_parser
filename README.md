@@ -14,7 +14,7 @@
 
 | `Visual Studio 2015` и выше| Остальные|
 | ------------- |:-------------:|
-|![how-to-start](https://sun9-62.userapi.com/6Q8x9scV60YLd1X31cwY3QjlETFQBUG-sOy3KQ/-8zDKZp78Kg.jpg)| git clone https://github.com/UnrealEugene/math_parser.git|
+|![how-to-start](https://sun9-21.userapi.com/ZVPWkc7O5Uq1ClWlDu1-bbsulcKewG-o-gBE1w/OUCSRdH8RtI.jpg)| git clone https://github.com/UnrealEugene/math_parser.git|
 | ![](https://sun9-75.userapi.com/KI3FOZGQnSDLlT381ko0vMOCrKimi14gDMVaNA/NOzeHBNe9vU.jpg)| 
 
 ### Как работать
