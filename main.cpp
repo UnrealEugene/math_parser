@@ -35,6 +35,9 @@ int main() {
     );
     std::cout << a->to_string() << " = " << a->evaluate({ }).cast<double>() << std::endl;
 
+    auto aa = std::make_shared<math::sine<double>>(z);
+    std::cout << aa->to_string() << " = " << aa->evaluate({ }).cast<double>() << std::endl;
+
     test_unary_operation<math::natural_logarithm>(2.0);
     test_unary_operation<math::exponent>(2.0);
 
