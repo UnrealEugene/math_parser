@@ -6,13 +6,17 @@
 #include <string>
 #include <typeinfo>
 #include <typeindex>
+#include <utility>
 
 #include "../expression.h"
+#include "calculator/equals_calculator.h"
+#include "calculator/string_calculator.h"
 
 namespace math {
+    template <typename T>
     class value : public expression {
      public:
-        inline explicit value(number v) : val_(v) { }
+        inline explicit value(T const& v) : val_(v) { }
         inline expression_ptr get_arg(size_t) override {
             return nullptr;
         }
@@ -25,8 +29,8 @@ namespace math {
             return val_;
         }
 
-        inline std::string to_string(base_calculator const& calc) const override {
-            return calc.to_string(val_);
+        inline std::string to_string() const override {
+            return string_calculator<T>::to_string(val_);
         }
 
         inline OpPriority priority() const override {
@@ -37,15 +41,15 @@ namespace math {
             return true;
         }
 
-        inline number evaluate(var_table const&, base_calculator const&) const override {
+        inline number evaluate(var_table const&) const override {
             return val_;
         }
 
-        inline bool equals(expression const& rhs, base_calculator const& calc) const override {
+        inline bool equals(expression const& rhs) const override {
             if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
                 return false;
             auto const& t_rhs = static_cast<value const&>(rhs);
-            return calc.equals(val_, t_rhs.val());
+            return equals_calculator<T>::equals(val_, t_rhs.val());
         }
 
     protected:

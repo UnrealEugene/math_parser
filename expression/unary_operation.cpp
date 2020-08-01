@@ -31,15 +31,15 @@ namespace math {
         return arg_;
     }
 
-    number unary_operation::evaluate(var_table const& table, base_calculator const& calc) const {
-        return calculate(arg_->evaluate(table, calc), calc);
+    number unary_operation::evaluate(var_table const& table) const {
+        return calculate(arg_->evaluate(table));
     }
 
-    bool unary_operation::equals(expression const& rhs, base_calculator const& calc) const {
+    bool unary_operation::equals(expression const& rhs) const {
         if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
             return false;
         auto const& t_rhs = static_cast<unary_operation const&>(rhs);
-        return arg_->equals(*t_rhs.arg(), calc);
+        return arg_->equals(*t_rhs.arg());
     }
 
     OpPriority unary_operation::priority() const {
@@ -50,9 +50,9 @@ namespace math {
         return true;
     }
 
-    std::string unary_operation::make_string(std::string const& sign, base_calculator const& calc) const {
+    std::string unary_operation::make_string(std::string const& sign) const {
         std::stringstream res;
-        res << sign << "(" << arg_->to_string(calc) << ")";
+        res << sign << "(" << arg_->to_string() << ")";
         return res.str();
     }
 }

@@ -8,8 +8,6 @@
 #include <typeinfo>
 
 namespace math {
-    struct base_calculator;
-
     struct number {
         template <typename T>
         number(T const& t) : held_(new holder<T>(t)) { }
