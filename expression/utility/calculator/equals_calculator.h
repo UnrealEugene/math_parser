@@ -14,7 +14,7 @@ namespace math {
     struct equals_calculator {
         static bool equals(value const& l, value const& r) {
             try {
-                return l.cast<T>() == r.cast<T>();
+                return l.unfold<T>() == r.unfold<T>();
             } catch (std::runtime_error const&) {
                 return false;
             }

@@ -16,7 +16,7 @@ namespace math {
         }
 
         inline value evaluate(var_table const& table) const override {
-            return value(static_cast<To>(arg_->evaluate(table).cast<From>()));
+            return value(static_cast<To>(arg_->evaluate(table).unfold<From>()));
         }
 
     protected:

@@ -13,9 +13,9 @@ namespace math {
         value(T const& t) : held_(new holder<T>(t)) { }
 
         template <typename T>
-        T cast() const {
+        T unfold() const {
             if (typeid(T) != held_->type_info())
-                throw std::runtime_error("Bad math::value cast");
+                throw std::runtime_error("Bad math::value unfold");
             return std::static_pointer_cast<holder<T>>(held_)->t_;
         }
 

@@ -135,7 +135,7 @@ namespace math {
     template <typename T>
     matrix<T>::operator T() const {
         if (height() != 1 || width() != 1)
-            throw std::runtime_error("Bad math::matrix cast to number");
+            throw std::runtime_error("Bad math::matrix unfold to number");
         return data_[0][0];
     }
 
