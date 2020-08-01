@@ -24,7 +24,7 @@ namespace math {
         }
 
      protected:
-        inline number calculate(number lhs, number rhs) const override {
+        inline value calculate(value lhs, value rhs) const override {
             return binary_calculator<U, V>::add(lhs, rhs);
         }
     };

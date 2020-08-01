@@ -15,7 +15,7 @@ namespace math {
         }
 
     protected:
-        inline number calculate(number arg) const override {
+        inline value calculate(value arg) const override {
             return unary_calculator<T>::cotangent(arg);
         }
     };

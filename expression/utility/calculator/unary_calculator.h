@@ -6,90 +6,104 @@
 
 #include <cmath>
 
-#include "../number.h"
+#include "../value.h"
 
 namespace math {
     template <typename T>
     struct unary_calculator {
-        static number negate(number const& x) {
-            return number(-x.value<T>());
+        static value negate(value const& x) {
+            return value(-x.cast<T>());
         }
 
 
-        static number exponent(number const& x) {
-            return number(std::exp(x.value<T>()));
+        static value exponent(value const& x) {
+            using std::exp;
+            return value(exp(x.cast<T>()));
         }
 
-        static number natural_logarithm(number const& x) {
-            return number(std::log(x.value<T>()));
-        }
-
-
-        static number sine(number const& x) {
-            return number(std::sin(x.value<T>()));
-        }
-
-        static number cosine(number const& x) {
-            return number(std::cos(x.value<T>()));
-        }
-
-        static number tangent(number const& x) {
-            return number(std::tan(x.value<T>()));
-        }
-
-        static number cotangent(number const& x) {
-            return number(1.0 / std::tan(x.value<T>()));
+        static value natural_logarithm(value const& x) {
+            using std::log;
+            return value(log(x.cast<T>()));
         }
 
 
-        static number arcsine(number const& x) {
-            return number(std::asin(x.value<T>()));
+        static value sine(value const& x) {
+            using std::sin;
+            return value(sin(x.cast<T>()));
         }
 
-        static number arccosine(number const& x) {
-            return number(std::acos(x.value<T>()));
+        static value cosine(value const& x) {
+            using std::cos;
+            return value(cos(x.cast<T>()));
         }
 
-        static number arctangent(number const& x) {
-            return number(std::atan(x.value<T>()));
+        static value tangent(value const& x) {
+            using std::tan;
+            return value(tan(x.cast<T>()));
         }
 
-        static number arccotangent(number const& x) {
-            return number(std::acos(0.0) - std::atan(x.value<T>()));
-        }
-
-
-        static number sine_h(number const& x) {
-            return number(std::sinh(x.value<T>()));
-        }
-
-        static number cosine_h(number const& x) {
-            return number(std::cosh(x.value<T>()));
-        }
-
-        static number tangent_h(number const& x) {
-            return number(std::tanh(x.value<T>()));
-        }
-
-        static number cotangent_h(number const& x) {
-            return number(1.0 / std::tanh(x.value<T>()));
+        static value cotangent(value const& x) {
+            return value(1.0 / std::tan(x.cast<T>()));
         }
 
 
-        static number arsine_h(number const& x) {
-            return number(std::asinh(x.value<T>()));
+        static value arcsine(value const& x) {
+            using std::asin;
+            return value(asin(x.cast<T>()));
         }
 
-        static number arcosine_h(number const& x) {
-            return number(std::acosh(x.value<T>()));
+        static value arccosine(value const& x) {
+            using std::acos;
+            return value(acos(x.cast<T>()));
         }
 
-        static number artangent_h(number const& x) {
-            return number(std::atanh(x.value<T>()));
+        static value arctangent(value const& x) {
+            using std::atan;
+            return value(atan(x.cast<T>()));
         }
 
-        static number arcotangent_h(number const& x) {
-            return number(std::atanh(1.0 / x.value<T>()));
+        static value arccotangent(value const& x) {
+            return value(std::acos(0.0) - std::atan(x.cast<T>()));
+        }
+
+
+        static value sine_h(value const& x) {
+            using std::sinh;
+            return value(sinh(x.cast<T>()));
+        }
+
+        static value cosine_h(value const& x) {
+            using std::cosh;
+            return value(cosh(x.cast<T>()));
+        }
+
+        static value tangent_h(value const& x) {
+            using std::tanh;
+            return value(tanh(x.cast<T>()));
+        }
+
+        static value cotangent_h(value const& x) {
+            return value(1.0 / std::tanh(x.cast<T>()));
+        }
+
+
+        static value arsine_h(value const& x) {
+            using std::asinh;
+            return value(asinh(x.cast<T>()));
+        }
+
+        static value arcosine_h(value const& x) {
+            using std::acosh;
+            return value(acosh(x.cast<T>()));
+        }
+
+        static value artangent_h(value const& x) {
+            using std::atanh;
+            return value(atanh(x.cast<T>()));
+        }
+
+        static value arcotangent_h(value const& x) {
+            return value(std::atanh(1.0 / x.cast<T>()));
         }
     };
 }

@@ -6,30 +6,31 @@
 
 #include <cmath>
 
-#include "../number.h"
+#include "../value.h"
 
 namespace math {
     template <typename U, typename V>
     struct binary_calculator {
-        static number add(number const& l, number const& r) {
-            return number(l.value<U>() + r.value<V>());
+        static value add(value const& l, value const& r) {
+            return value(l.cast<U>() + r.cast<V>());
         }
 
-        static number subtract(number const& l, number const& r) {
-            return number(l.value<U>() - r.value<V>());
+        static value subtract(value const& l, value const& r) {
+            return value(l.cast<U>() - r.cast<V>());
         }
 
-        static number multiply(number const& l, number const& r) {
-            return number(l.value<U>() * r.value<V>());
+        static value multiply(value const& l, value const& r) {
+            return value(l.cast<U>() * r.cast<V>());
         }
 
-        static number divide(number const& l, number const& r) {
-            return number(l.value<U>() / r.value<V>());
+        static value divide(value const& l, value const& r) {
+            return value(l.cast<U>() / r.cast<V>());
         }
 
 
-        static number power(number const& l, number const& r) {
-            return number(std::pow(l.value<U>(), r.value<V>()));
+        static value power(value const& l, value const& r) {
+            using std::pow;
+            return value(pow(l.cast<U>(), r.cast<V>()));
         }
     };
 }

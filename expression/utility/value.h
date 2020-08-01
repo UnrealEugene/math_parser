@@ -1,58 +1,40 @@
-// value header file
-
+//
+// Created by DNS on 31.07.20.
+//
 #pragma once
 
 #include <memory>
-#include <string>
+#include <type_traits>
 #include <typeinfo>
-#include <typeindex>
-#include <utility>
-
-#include "../expression.h"
-#include "calculator/equals_calculator.h"
-#include "calculator/string_calculator.h"
 
 namespace math {
-    template <typename T>
-    class value : public expression {
-     public:
-        inline explicit value(T const& v) : val_(v) { }
-        inline expression_ptr get_arg(size_t) override {
-            return nullptr;
+    struct value {
+        template <typename T>
+        value(T const& t) : held_(new holder<T>(t)) { }
+
+        template <typename T>
+        T cast() const {
+            if (typeid(T) != held_->type_info())
+                throw std::runtime_error("Bad math::value cast");
+            return std::static_pointer_cast<holder<T>>(held_)->t_;
         }
 
-        inline const_expression_ptr get_arg(size_t) const override {
-            return nullptr;
-        }
+    private:
+        struct base_holder {
+            virtual ~base_holder() = default;
+            virtual std::type_info const& type_info() const = 0;
+        };
 
-        inline number val() const {
-            return val_;
-        }
+        template <typename T>
+        struct holder : base_holder {
+            explicit holder(T const& t) : t_(t) { }
+            std::type_info const& type_info() const override {
+                return typeid(t_);
+            }
 
-        inline std::string to_string() const override {
-            return string_calculator<T>::to_string(val_);
-        }
+            T t_;
+        };
 
-        inline OpPriority priority() const override {
-            return OpPriority::Highest;
-        }
-
-        inline bool is_commutative() const override {
-            return true;
-        }
-
-        inline number evaluate(var_table const&) const override {
-            return val_;
-        }
-
-        inline bool equals(expression const& rhs) const override {
-            if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
-                return false;
-            auto const& t_rhs = static_cast<value const&>(rhs);
-            return equals_calculator<T>::equals(val_, t_rhs.val());
-        }
-
-    protected:
-        number val_;
+        std::shared_ptr<base_holder> held_;
     };
 }

@@ -7,14 +7,14 @@
 #include <typeinfo>
 #include <typeindex>
 
-#include "../number.h"
+#include "../value.h"
 
 namespace math {
     template <typename T>
     struct equals_calculator {
-        static bool equals(number const& l, number const& r) {
+        static bool equals(value const& l, value const& r) {
             try {
-                return l.value<T>() == r.value<T>();
+                return l.cast<T>() == r.cast<T>();
             } catch (std::runtime_error const&) {
                 return false;
             }

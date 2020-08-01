@@ -6,13 +6,14 @@
 
 #include <string>
 
-#include "../number.h"
+#include "../value.h"
 
 namespace math {
     template <typename T>
     struct string_calculator {
-        static std::string to_string(number const& x) {
-            return std::to_string(x.value<T>());
+        static std::string to_string(value const& x) {
+            using std::to_string;
+            return to_string(x.cast<T>());
         }
     };
 }

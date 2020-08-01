@@ -16,13 +16,13 @@ namespace math {
         const_expression_ptr get_arg(size_t) const override;
         expression_ptr arg();
         const_expression_ptr arg() const;
-        number evaluate(var_table const&) const override;
+        value evaluate(var_table const&) const override;
         bool equals(expression const&) const override;
         OpPriority priority() const override;
         bool is_commutative() const override;
 
     protected:
-        virtual number calculate(number) const = 0;
+        virtual value calculate(value) const = 0;
         std::string make_string(std::string const&) const;
 
         expression_ptr arg_;
