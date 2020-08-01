@@ -11,6 +11,7 @@ namespace math {
     class binary_operation : public expression {
      public:
         binary_operation(expression_ptr, expression_ptr);
+        ~binary_operation() override = default;
 
         expression_ptr get_arg(size_t) override;
         const_expression_ptr get_arg(size_t) const override;

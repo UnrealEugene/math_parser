@@ -17,6 +17,8 @@ namespace math {
     class constant : public expression {
      public:
         inline explicit constant(T const& v) : val_(v) { }
+        ~constant() override = default;
+
         inline expression_ptr get_arg(size_t) override {
             return nullptr;
         }
