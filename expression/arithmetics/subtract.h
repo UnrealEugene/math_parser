@@ -6,12 +6,13 @@
 #include "../binary_operation.h"
 
 namespace math {
+    template <typename U, typename V>
     class subtract : public binary_operation {
      public:
         using binary_operation::binary_operation;
 
-        inline std::string to_string(base_calculator const& calc) const override {
-            return make_string("-", calc);
+        inline std::string to_string() const override {
+            return make_string("-");
         }
 
         inline OpPriority priority() const override {
@@ -23,8 +24,8 @@ namespace math {
         }
 
      protected:
-        inline number calculate(number lhs, number rhs, base_calculator const& calc) const override {
-            return calc.subtract(lhs, rhs);
+        inline number calculate(number lhs, number rhs) const override {
+            return binary_calculator<U, V>::subtract(lhs, rhs);
         }
     };
 }

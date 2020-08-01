@@ -5,12 +5,13 @@
 #include "../binary_operation.h"
 
 namespace math {
+    template <typename U, typename V>
     class power : public binary_operation {
     public:
         using binary_operation::binary_operation;
 
-        inline std::string to_string(base_calculator const& calc) const override {
-            return make_string("**", calc);
+        inline std::string to_string() const override {
+            return make_string("**");
         }
 
         inline OpPriority priority() const override {
@@ -22,8 +23,8 @@ namespace math {
         }
 
     protected:
-        inline number calculate(number lhs, number rhs, base_calculator const& calc) const override {
-            return calc.power(lhs, rhs);
+        inline number calculate(number lhs, number rhs) const override {
+            return binary_calculator<U, V>::power(lhs, rhs);
         }
     };
 }

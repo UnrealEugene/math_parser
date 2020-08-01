@@ -22,7 +22,7 @@ namespace math {
             return nullptr;
         }
 
-        inline std::string to_string(base_calculator const&) const override {
+        inline std::string to_string() const override {
             return var_;
         }
 
@@ -34,19 +34,15 @@ namespace math {
             return true;
         }
 
-        inline number evaluate(var_table const& table, base_calculator const&) const override {
+        inline number evaluate(var_table const& table) const override {
             return table.at(var_);
         }
 
-        inline bool equals(expression const& rhs, base_calculator const&) const override {
+        inline bool equals(expression const& rhs) const override {
             if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
                 return false;
             auto const& t_rhs = static_cast<variable const&>(rhs);
-            return var_ == t_rhs.str();
-        }
-
-        inline std::string str() const {
-            return var_;
+            return var_ == t_rhs.to_string();
         }
 
     protected:

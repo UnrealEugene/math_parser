@@ -4,33 +4,36 @@
 #include "expression/utility.h"
 #include "expression/functions.h"
 
-template <typename T, typename U>
-void test_unary_operation(U x) {
-    auto calc = math::calculator<U>();
-    auto p = std::make_shared<T>(std::make_shared<math::value>(x));
-    std::cout << p->to_string(calc) << " = " << p->evaluate({ }, calc).template value<U>() << std::endl;
+template <template <typename> typename U, typename V>
+void test_unary_operation(V x) {
+    auto p = std::make_shared<U<V>>(std::make_shared<math::value<V>>(x));
+    std::cout << p->to_string() << " = " << p->evaluate({ }).template value<V>() << std::endl;
 }
 
 int main() {
-    auto calc = math::calculator<double>();
+    auto x = std::make_shared<math::add<double, double>>(
+            std::make_shared<math::value<double>>(2.0),
+            std::make_shared<math::variable>("x")
+    );
+    std::cout << x->to_string() << " = " << x->evaluate({{"x", 3.0}}).value<double>() << std::endl;
 
-    auto x = std::make_shared<math::add>(std::make_shared<math::value>(2.0), std::make_shared<math::variable>("x"));
-    std::cout << x->to_string(calc) << " = " << x->evaluate({{"x", 3.0}}, calc).value<double>() << std::endl;
+    auto y = std::make_shared<math::subtract<double, double>>(std::make_shared<math::value<double>>(9.0), x);
+    std::cout << y->to_string() << " = " << y->evaluate({{"x", 3.0}}).value<double>() << std::endl;
 
-    auto y = std::make_shared<math::subtract>(std::make_shared<math::value>(9.0), x);
-    std::cout << y->to_string(calc) << " = " << y->evaluate({{"x", 3.0}}, calc).value<double>() << std::endl;
-
-    auto z = std::make_shared<math::add>(
-            std::make_shared<math::value>(2.0),
-            std::make_shared<math::multiply>(
-                    std::make_shared<math::value>(2.0),
-                    std::make_shared<math::value>(2.0)
+    auto z = std::make_shared<math::add<int, double>>(
+            std::make_shared<math::value<int>>(2),
+            std::make_shared<math::multiply<double, double>>(
+                    std::make_shared<math::value<double>>(2.0),
+                    std::make_shared<math::value<double>>(2.0)
             )
     );
-    std::cout << z->to_string(calc) << " = " << z->evaluate({ }, calc).value<double>() << std::endl;
+    std::cout << z->to_string() << " = " << z->evaluate({ }).value<double>() << std::endl;
 
-    auto a = std::make_shared<math::power>(std::make_shared<math::value>(2.0), std::make_shared<math::value>(4.0));
-    std::cout << a->to_string(calc) << " = " << a->evaluate({ }, calc).value<double>() << std::endl;
+    auto a = std::make_shared<math::power<int, int>>(
+            std::make_shared<math::value<int>>(2),
+            std::make_shared<math::value<int>>(4)
+    );
+    std::cout << a->to_string() << " = " << a->evaluate({ }).value<double>() << std::endl;
 
     test_unary_operation<math::natural_logarithm>(2.0);
     test_unary_operation<math::exponent>(2.0);

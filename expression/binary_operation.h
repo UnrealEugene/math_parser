@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "expression.h"
+#include "utility/calculator/binary_calculator.h"
 
 namespace math {
     class binary_operation : public expression {
@@ -17,12 +18,12 @@ namespace math {
         const_expression_ptr left() const;
         expression_ptr right();
         const_expression_ptr right() const;
-        number evaluate(var_table const&, base_calculator const&) const override;
-        bool equals(expression const&, base_calculator const&) const override;
+        number evaluate(var_table const&) const override;
+        bool equals(expression const&) const override;
 
      protected:
-        virtual number calculate(number, number, base_calculator const&) const = 0;
-        std::string make_string(std::string const&, base_calculator const&) const;
+        virtual number calculate(number, number) const = 0;
+        std::string make_string(std::string const&) const;
 
         expression_ptr left_, right_;
     };
