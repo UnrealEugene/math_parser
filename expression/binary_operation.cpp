@@ -49,7 +49,7 @@ namespace math {
         return right_;
     }
 
-    number binary_operation::evaluate(var_table const& table) const {
+    value binary_operation::evaluate(var_table const& table) const {
         return calculate(left_->evaluate(table), right_->evaluate(table));
     }
 

@@ -8,11 +8,11 @@
 #include <string>
 
 namespace math {
-    struct number;
+    struct value;
     class expression;
     using expression_ptr = std::shared_ptr<expression>;
     using const_expression_ptr = std::shared_ptr<expression const>;
-    using var_table = std::map<std::string, number>;
+    using var_table = std::map<std::string, value>;
 
     bool less_priority(expression const&, expression const&);
     bool equal_priority(expression const&, expression const&);

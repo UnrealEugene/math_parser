@@ -18,11 +18,11 @@ namespace math {
         const_expression_ptr left() const;
         expression_ptr right();
         const_expression_ptr right() const;
-        number evaluate(var_table const&) const override;
+        value evaluate(var_table const&) const override;
         bool equals(expression const&) const override;
 
      protected:
-        virtual number calculate(number, number) const = 0;
+        virtual value calculate(value, value) const = 0;
         std::string make_string(std::string const&) const;
 
         expression_ptr left_, right_;

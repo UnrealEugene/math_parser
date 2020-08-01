@@ -31,7 +31,7 @@ namespace math {
         return arg_;
     }
 
-    number unary_operation::evaluate(var_table const& table) const {
+    value unary_operation::evaluate(var_table const& table) const {
         return calculate(arg_->evaluate(table));
     }
 
