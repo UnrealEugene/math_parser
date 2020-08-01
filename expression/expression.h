@@ -12,6 +12,8 @@
 namespace math {
     class expression {
      public:
+        virtual ~expression() = default;
+
         virtual expression_ptr get_arg(size_t) = 0;
         virtual const_expression_ptr get_arg(size_t) const = 0;
         virtual value evaluate(var_table const&) const = 0;

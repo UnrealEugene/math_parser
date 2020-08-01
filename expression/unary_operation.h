@@ -11,6 +11,7 @@ namespace math {
     class unary_operation : public expression {
     public:
         explicit unary_operation(expression_ptr);
+        ~unary_operation() override = default;
 
         expression_ptr get_arg(size_t) override;
         const_expression_ptr get_arg(size_t) const override;
