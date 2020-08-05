@@ -3,6 +3,7 @@
 #include "expression/arithmetics.h"
 #include "expression/utility.h"
 #include "expression/functions.h"
+#include "expression/expression_matrix.h"
 
 template <template <typename> typename U, typename V>
 void test_unary_operation(V x) {
@@ -72,6 +73,27 @@ int main() {
 
     auto mm = math::matrix<int>({{1, 2}, {3, 4}, {5, 6}});
     std::cout << mm << "\t\t" << math::matrix<int>::transpose(mm) << std::endl;
+
+    auto m3 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{2, 0}, {0, 2}}));
+    auto i1 = std::make_shared<math::constant<int>>(5);
+
+    auto d = std::make_shared<math::power<math::matrix<int>, int>>(m3, i1);
+
+    std::cout << d->to_string() << " = " << d->evaluate({ }).unfold<math::matrix<int>>() << std::endl;
+
+    auto m4 = std::make_shared<math::expression_matrix<int>>(
+            std::vector<std::vector<math::expression_ptr>>{
+                {
+                    std::make_shared<math::variable>("x"),
+                    std::make_shared<math::constant<int>>(2)
+                },
+                {
+                    std::make_shared<math::constant<int>>(2),
+                    std::make_shared<math::variable>("x")
+                }
+            });
+
+    std::cout << m4->to_string() << " = " << m4->evaluate({{"x", 4}}).unfold<math::matrix<int>>() << std::endl;
 
     return 0;
 }
