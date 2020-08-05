@@ -67,12 +67,11 @@ int main() {
 
     auto m3 = constant<math::matrix<int>>(math::matrix<int>({{2, 0}, {0, 2}}));
 
-    auto d = std::make_shared<math::power<math::matrix<int>, int>>(m3, constant<int>(5));
+    auto d = power<math::matrix<int>, int>(m3, constant<int>(5));
 
     std::cout << d->to_string() << " = " << d->evaluate({ }).unfold<math::matrix<int>>() << std::endl;
 
-    auto m4 = std::make_shared<math::expression_matrix<int>>(
-            std::vector<std::vector<math::expression_ptr>>{
+    auto m4 = expression_matrix<int>(std::vector<std::vector<math::expression_ptr>>{
                 {variable("x"), constant<int>(2)},
                 {constant<int>(2), variable("x")}});
 
