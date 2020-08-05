@@ -32,7 +32,7 @@ namespace math {
     namespace construct {
         template <typename U, typename V>
         auto divide(math::expression_ptr const & left, math::expression_ptr const & right) {
-            return std::make_shared<math::devide<U, V>>(left, right);
+            return std::make_shared<math::divide<U, V>>(left, right);
         }
     }
 }
