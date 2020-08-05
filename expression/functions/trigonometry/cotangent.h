@@ -19,4 +19,11 @@ namespace math {
             return unary_calculator<T>::cotangent(arg);
         }
     };
+
+    namespace construct {
+        template <typename T>
+        auto cotangent(math::expression_ptr const & arg) {
+            return std::make_shared<math::cotangent<T>>(arg);
+        }
+    }
 }

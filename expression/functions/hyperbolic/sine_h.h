@@ -19,4 +19,11 @@ namespace math {
             return unary_calculator<T>::sine_h(arg);
         }
     };
+
+    namespace construct {
+        template <typename T>
+        auto sine_h(math::expression_ptr const & arg) {
+            return std::make_shared<math::sine_h<T>>(arg);
+        }
+    }
 }

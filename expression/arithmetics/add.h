@@ -28,4 +28,11 @@ namespace math {
             return binary_calculator<U, V>::add(lhs, rhs);
         }
     };
+    
+    namespace construct {
+        template <typename U, typename V>
+        auto add(math::expression_ptr const& left, math::expression_ptr const& right) {
+            return std::make_shared<math::add<U, V>>(left, right);
+        }
+    }
 }

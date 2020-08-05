@@ -19,4 +19,11 @@ namespace math {
             return unary_calculator<T>::artangent_h(arg);
         }
     };
+
+    namespace construct {
+        template <typename T>
+        auto artangent_h(math::expression_ptr const & arg) {
+            return std::make_shared<math::artangent_h<T>>(arg);
+        }
+    }
 }
