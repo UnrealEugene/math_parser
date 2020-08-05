@@ -28,4 +28,11 @@ namespace math {
             return binary_calculator<U, V>::divide(lhs, rhs);
         }
     };
+
+    namespace construct {
+        template <typename U, typename V>
+        auto divide(math::expression_ptr const & left, math::expression_ptr const & right) {
+            return std::make_shared<math::divide<U, V>>(left, right);
+        }
+    }
 }

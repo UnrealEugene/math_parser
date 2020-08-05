@@ -27,4 +27,11 @@ namespace math {
             return binary_calculator<U, V>::power(lhs, rhs);
         }
     };
+
+    namespace construct {
+        template <typename U, typename V>
+        auto power(math::expression_ptr const & left, math::expression_ptr const & right) {
+            return std::make_shared<math::power<U, V>>(left, right);
+        }
+    }
 }

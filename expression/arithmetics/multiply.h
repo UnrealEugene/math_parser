@@ -28,4 +28,11 @@ namespace math {
             return binary_calculator<U, V>::multiply(lhs, rhs);
         }
     };
+
+    namespace construct {
+        template <typename U, typename V>
+        auto multiply(math::expression_ptr const & left, math::expression_ptr const & right) {
+            return std::make_shared<math::multiply<U, V>>(left, right);
+        }
+    }
 }

@@ -28,4 +28,11 @@ namespace math {
             return binary_calculator<U, V>::subtract(lhs, rhs);
         }
     };
+
+    namespace construct {
+        template <typename U, typename V>
+        auto subtract(math::expression_ptr const & left, math::expression_ptr const & right) {
+            return std::make_shared<math::subtract<U, V>>(left, right);
+        }
+    }
 }
