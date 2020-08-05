@@ -24,4 +24,11 @@ namespace math {
             return 0;
         }
     };
+
+    namespace construct {
+        template <typename To, typename From>
+        auto cast(math::expression_ptr const& arg) {
+            return std::make_shared<math::cast<To, From>>(arg);
+        }
+    }
 }

@@ -7,7 +7,8 @@
 #include <vector>
 #include <sstream>
 #include <typeindex>
-#include "expression.h"
+#include "types/matrix.h"
+#include "../expression.h"
 
 namespace math {
     template <typename T>
@@ -116,5 +117,12 @@ namespace math {
             }
         }
         return valid;
+    }
+
+    namespace construct {
+        template <typename T>
+        auto expression_matrix(std::vector<std::vector<expression_ptr>> const& arg) {
+            return std::make_shared<math::expression_matrix<T>>(arg);
+        }
     }
 }

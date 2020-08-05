@@ -57,4 +57,11 @@ namespace math {
     private:
         value val_;
     };
+
+    namespace construct {
+        template <typename T>
+        auto constant(T const& arg) {
+            return std::make_shared<math::constant<T>>(arg);
+        }
+    }
 }

@@ -50,4 +50,10 @@ namespace math {
     private:
         std::string var_;
     };
+
+    namespace construct {
+        auto variable(std::string const& arg) {
+            return std::make_shared<math::variable>(arg);
+        }
+    }
 }

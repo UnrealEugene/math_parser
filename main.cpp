@@ -3,7 +3,6 @@
 #include "expression/arithmetics.h"
 #include "expression/utility.h"
 #include "expression/functions.h"
-#include "expression/expression_matrix.h"
 
 template <template <typename> typename U, typename V>
 void test_unary_operation(V x) {
@@ -12,31 +11,23 @@ void test_unary_operation(V x) {
 }
 
 int main() {
-    auto x = std::make_shared<math::add<double, double>>(
-            std::make_shared<math::constant<double>>(2.0),
-            std::make_shared<math::variable>("x")
-    );
+    using namespace math::construct;
+
+    auto x = add<double, double>(constant<double>(2.0), variable("x"));
     std::cout << x->to_string() << " = " << x->evaluate({{"x", 3.0}}).unfold<double>() << std::endl;
 
-    auto y = std::make_shared<math::subtract<double, double>>(std::make_shared<math::constant<double>>(9.0), x);
+    auto y = subtract<double, double>(constant<double>(9.0), x);
     std::cout << y->to_string() << " = " << y->evaluate({{"x", 3.0}}).unfold<double>() << std::endl;
 
-    auto z = std::make_shared<math::add<int, double>>(
-            std::make_shared<math::constant<int>>(2),
-            std::make_shared<math::multiply<double, double>>(
-                    std::make_shared<math::constant<double>>(2.0),
-                    std::make_shared<math::constant<double>>(2.0)
-            )
-    );
+    auto z = add<int, double>(
+            constant<int>(2),
+            multiply<double, double>(constant<double>(2.0), constant<double>(2.0)));
     std::cout << z->to_string() << " = " << z->evaluate({ }).unfold<double>() << std::endl;
 
-    auto a = std::make_shared<math::power<int, int>>(
-            std::make_shared<math::constant<int>>(2),
-            std::make_shared<math::constant<int>>(4)
-    );
+    auto a = power<int, int>(constant<int>(2), constant<int>(4));
     std::cout << a->to_string() << " = " << a->evaluate({ }).unfold<double>() << std::endl;
 
-    auto aa = std::make_shared<math::sine<double>>(z);
+    auto aa = sine<double>(z);
     std::cout << aa->to_string() << " = " << aa->evaluate({ }).unfold<double>() << std::endl;
 
     test_unary_operation<math::natural_logarithm>(2.0);
@@ -62,36 +53,28 @@ int main() {
     test_unary_operation<math::artangent_h>(1.0);
     test_unary_operation<math::arcotangent_h>(1.0);
 
-    auto m1 = std::make_shared<math::constant<math::matrix<int>>>(math::row<int>({1, 2, 3}));
-    auto m2 = std::make_shared<math::constant<math::matrix<int>>>(math::column<int>({1, 2, 3}));
+    auto m1 = constant<math::matrix<int>>(math::row<int>({1, 2, 3}));
+    auto m2 = constant<math::matrix<int>>(math::column<int>({1, 2, 3}));
 
-    auto b = std::make_shared<math::multiply<math::matrix<int>, math::matrix<int>>>(m1, m2);
+    auto b = multiply<math::matrix<int>, math::matrix<int>>(m1, m2);
 
-    auto c = std::make_shared<math::cast<int, math::matrix<int>>>(b);
+    auto c = cast<int, math::matrix<int>>(b);
 
     std::cout << c->to_string() << " = " << c->evaluate({ }).unfold<int>() << std::endl;
 
     auto mm = math::matrix<int>({{1, 2}, {3, 4}, {5, 6}});
     std::cout << mm << "\t\t" << math::matrix<int>::transpose(mm) << std::endl;
 
-    auto m3 = std::make_shared<math::constant<math::matrix<int>>>(math::matrix<int>({{2, 0}, {0, 2}}));
-    auto i1 = std::make_shared<math::constant<int>>(5);
+    auto m3 = constant<math::matrix<int>>(math::matrix<int>({{2, 0}, {0, 2}}));
 
-    auto d = std::make_shared<math::power<math::matrix<int>, int>>(m3, i1);
+    auto d = std::make_shared<math::power<math::matrix<int>, int>>(m3, constant<int>(5));
 
     std::cout << d->to_string() << " = " << d->evaluate({ }).unfold<math::matrix<int>>() << std::endl;
 
     auto m4 = std::make_shared<math::expression_matrix<int>>(
             std::vector<std::vector<math::expression_ptr>>{
-                {
-                    std::make_shared<math::variable>("x"),
-                    std::make_shared<math::constant<int>>(2)
-                },
-                {
-                    std::make_shared<math::constant<int>>(2),
-                    std::make_shared<math::variable>("x")
-                }
-            });
+                {variable("x"), constant<int>(2)},
+                {constant<int>(2), variable("x")}});
 
     std::cout << m4->to_string() << " = " << m4->evaluate({{"x", 4}}).unfold<math::matrix<int>>() << std::endl;
 
