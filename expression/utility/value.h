@@ -10,24 +10,24 @@
 namespace math {
     struct value {
         template <typename T>
-        value(T const& t) : held_(new holder<T>(t)) { }
+        value(T const& t) : held_(new holder_<T>(t)) { }
 
         template <typename T>
         T unfold() const {
             if (typeid(T) != held_->type_info())
                 throw std::runtime_error("Bad math::value unfold");
-            return std::static_pointer_cast<holder<T>>(held_)->t_;
+            return std::static_pointer_cast<holder_ < T>>(held_)->t_;
         }
 
     private:
-        struct base_holder {
-            virtual ~base_holder() = default;
+        struct base_holder_ {
+            virtual ~base_holder_() = default;
             virtual std::type_info const& type_info() const = 0;
         };
 
         template <typename T>
-        struct holder : base_holder {
-            explicit holder(T const& t) : t_(t) { }
+        struct holder_ : base_holder_ {
+            explicit holder_(T const& t) : t_(t) { }
             std::type_info const& type_info() const override {
                 return typeid(t_);
             }
@@ -35,6 +35,6 @@ namespace math {
             T t_;
         };
 
-        std::shared_ptr<base_holder> held_;
+        std::shared_ptr<base_holder_> held_;
     };
 }
