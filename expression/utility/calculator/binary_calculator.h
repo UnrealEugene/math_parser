@@ -7,6 +7,7 @@
 #include <cmath>
 
 #include "../value.h"
+#include "../algorithm.h"
 
 namespace math {
     template <typename U, typename V>
@@ -30,6 +31,7 @@ namespace math {
 
         static value power(value const& l, value const& r) {
             using std::pow;
+            using math::pow;
             return value(pow(l.unfold<U>(), r.unfold<V>()));
         }
     };

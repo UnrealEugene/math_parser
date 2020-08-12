@@ -224,21 +224,4 @@ namespace math {
         }
         return matrix<T>(res);
     }
-
-    template <typename T>
-    matrix<T> pow(matrix<T> lhs, int rhs) {
-        if (rhs < 0)
-            throw std::runtime_error("Matrix exponentiation negative power");
-        if (lhs.width() != lhs.height())
-            throw std::runtime_error("Matrix exponentiation dimension error");
-        matrix<T> res = matrix<T>::identity(lhs.height());
-        while (rhs > 0) {
-            if (rhs % 2 == 1) {
-                res *= lhs;
-            }
-            lhs *= lhs;
-            rhs /= 2;
-        }
-        return res;
-    }
 }
