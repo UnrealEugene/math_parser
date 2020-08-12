@@ -6,8 +6,10 @@
 #include <memory>
 #include <map>
 #include <string>
+#include <gmpxx.h>
 
 namespace math {
+    using big_integer = mpz_class;
     struct value;
     class expression;
     using expression_ptr = std::shared_ptr<expression>;

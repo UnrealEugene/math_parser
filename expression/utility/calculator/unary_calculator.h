@@ -7,6 +7,7 @@
 #include <cmath>
 
 #include "../value.h"
+#include "../algorithm.h"
 
 namespace math {
     template <typename T>

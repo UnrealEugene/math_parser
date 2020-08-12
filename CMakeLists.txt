@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(math_parser
         main.cpp
-
         expression/binary_operation.cpp
         expression/unary_operation.cpp
-        expression/utility/definitions.cpp)
+        expression/utility/definitions.cpp
+        )
+
+target_link_libraries(math_parser -lgmp -lgmpxx)
